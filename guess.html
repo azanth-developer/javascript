@@ -1,0 +1,119 @@
+{% {% load static %}%}
+  !DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guess The Number</title>
+</head>
+    <h1>Guess The Number</h1>
+    <input id="guessnumber" value="" placeholder="Enter your guess">
+    <button onclick="check()">Check</button>
+    <p id="result">You are Wrong/Right</p>
+    <p id="Score">Score:10</p>
+    <head>
+  <title>Guess The Number</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #8360c3, #2ebf91);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      width: 200px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      background-color: #ffffff;
+      color: #333;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #ddd;
+    }
+
+    p {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    #result {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+    <script>
+        var guessnumber = document.getElementById("guessnumber")
+        var result = document.getElementById("result")
+        var score = document.getElementById("Score")
+        var randomnumber = Math.floor(Math.random()*10)+1
+        var totalscore=10
+        function check()
+        {
+          var enterednumber = Number(guessnumber.value)
+          if(randomnumber==enterednumber)
+          {
+            console.log("Right")
+            result.textContent="Right"
+            alert("You Won...")
+          }
+          if(enterednumber!=randomnumber && enterednumber<randomnumber){
+            alert("Guess greater number");
+            console.log("Guess greater number")
+            guessnumber.value=""
+            result.textContent="Guess greater number"
+
+          }
+          if(enterednumber!=randomnumber && enterednumber>randomnumber){
+            alert("Guess smallest number");
+            console.log("Guess smallest number")
+            guessnumber.value=""
+            result.textContent="Guess smallest number"
+
+          }
+          {
+            console.log("")
+          }
+          if (totalscore <= 0) {
+      alert("Game Over! The number was " + randomnumber);
+      result.textContent = "Game Over";
+        return;
+}
+
+          else{
+            totalscore=totalscore-1
+            score.textContent="score:"+totalscore
+            result.textContent="Wrong"
+          }
+        }
+    </script>
+
+
+</html>
